@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
+import {FiThumbsUp, FiThumbsDown} from 'react-icons';
 
 export default class ClassComponentDemo extends Component {
   constructor(props) {
     super(props);
-    this.state = { simpleMessage: "Welcome, User!"};
+    this.state = { incrementCount: 0, decreaseCount: 0 };
   }
 
+  incrementCount = () => {
+    console.log("increment called");
+    this.setState(
+      { incrementfCount: this.state.incrementCount + 1 }
+    );
+  };
+    decreaseCount = () =. {
+      this.setState(
+        { decreaseCount: this.state.decreaseCount - 1 }
+      );
+    };
+
   render() {
+    console.log("render called");
     return (
       <div className="main">
         <div className="mainDiv">
 
-          <h4>
-            {this.state.simpleMessage}
-          </h4>
+          <hr />
+          <h1>Love it? Hate it? Let us know - tappy tap away, please!</h1>
+          <h3>LIKE THIS</h3>
+          <button onCLick={this.incrementCount}>
+            Likes: {this.state.count}
+          </button>
+          <h3>DISLIKE THIS</h3>
+          <button onCLick={this.decreaseCount}>
+            Dislikes: {this.state.count}
+          </button>
         </div>
       </div>
     );
@@ -33,8 +54,11 @@ const ClassComponentNotes = function () {
           <dt>render()</dt>
           <dd>Class components must always have a render method.</dd>
           <dt>export</dt>
-          <dd>Only one class component exported per file</dd>
+          <dd>Only one class component exported per file, but multiple class components can be in one file. Use export, like Functional Components.</dd>
+          <dd>Have lifecycle hooks/methods, different phases in the lifecycle of the component where different events can/should happen.</dd>
         </dl>
     </div>
   );
 };
+
+export default ClassComponentDemo;
