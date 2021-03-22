@@ -13,7 +13,7 @@ export default class ClassComponentDemo extends Component {
       { incrementfCount: this.state.incrementCount + 1 }
     );
   };
-    decreaseCount = () =. {
+    decreaseCount = () = {
       this.setState(
         { decreaseCount: this.state.decreaseCount - 1 }
       );
@@ -40,7 +40,17 @@ export default class ClassComponentDemo extends Component {
     );
   }
 }
-
+class FruitBowl extends Component {
+  render() {
+    return (
+      <div>
+        {this.props.fruits.map((fruit) => {
+          return <p>{fruit}</p>
+        })}
+      </div>
+    );
+  }
+}
 const ClassComponentNotes = function () {
   return (
     <div> 

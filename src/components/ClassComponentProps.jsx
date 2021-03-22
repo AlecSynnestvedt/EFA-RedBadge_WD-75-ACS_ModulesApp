@@ -4,19 +4,19 @@ export default class ClassComponentProps extends Component {
 constructor(props) {
   super(props);
   this.state = {
-    fruits: ["apples", "bananas", "oranges", "mangoe3s", "kiwis"],
+    fruits: ["canteloupe", "banana", "honeydew", "watermelon", "blue berries"],
     newFruit: "",
   };
   this.plusFruit = this.plusFruit.bind(this);
 }
 
 addFruit(event) {
-  even.preventDefault();
+  event.preventDefault();
   this.setState({
-    fruits: [...this.state.fruits, this.state.plusFruit],
+    fruitBowl: [...this.state.fruitBowl, this.state.newFruit],
+    newFruit: "",
   });
 }
-
 changeHandler(event) {
   this.setStateI({ newFruit: event.target.value });
 }
@@ -28,25 +28,32 @@ changeHandler(event) {
             <input type="text" value={this.state.newFruit} onChange={(event) => this.changeHandler(event)}/>
             <button type="submit">Add a Fruit!</button>
           </form>
+          <FruitBowl fruits={this.state.fruitBowl} />
         </div>
       </div>
     );
   }
 }
-
-export default ClassComponentProps;
-
 class FruitBowl extends Component {
   render () {
     return (
       <div>
         {this.props.fruits.map((fruit) => {
-          return <p>{fruit}</p>
+          return <Fruit passingFruit={fruit} />;
         })}
       </div>
     );
   }
 }
+
+const Fruit = (props) => {
+  return (
+    <div>
+    <h3>{props.passingFruit}</h3>
+    </div>
+  );
+};
+
 /*
 ==============
 Challenge I
